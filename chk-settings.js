@@ -1,11 +1,5 @@
-require('./css/main.scss')
-require('./css/fontFace.scss')
-require('./css/animations.scss')
-require('./css/settings.scss')
-require('./css/support.scss')
-
-var Wix = require('Wix')
-var $ = require('jquery')
+import {Wix} from "https://static.parastorage.com/services/js-sdk/1.102.0</span>/js/wix.min.js";
+import {$} from "https://static.parastorage.com/services/third-party/jquery/3.1.1/dist/jquery.min.js";
 
 
 function onUpdate(key, value) {
