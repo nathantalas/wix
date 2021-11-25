@@ -9,10 +9,36 @@
     <script src="//static.parastorage.com/services/third-party/lodash/4.17.2/lodash.js"></script>
     <script src="//static.parastorage.com/services/js-sdk/1.102.0</span>/js/wix.min.js"></script>
     <script src="//static.parastorage.com/services/editor-ui-lib/1.28.0/lib/editor-ui-lib-jquery.min.js"></script>
+    <script src="chk-settings.js" type="module"></script>
 </head>
 
 <body>
-<div id="root" class="root"></div>
-<script src="chk-settings.js" type="module"></script>
+<div id="root" class="root">
+    <wix-control 
+            name="UI.checkbox" 
+            //add the UI control options and function pointers
+            props="{
+                    label: 'Ultimate Wee',
+                    onChange: funcs.onCChange,
+                   'wix-param': 'test'
+                    }">
+    </wix-control>
+</div>
+<script>
+    function test() {
+        Wix.Settings.openLinkPanel(function(r) {
+            str = "";
+                for (p in r) {
+                    str += p + '=' + r[p] + ';';
+                }
+                xhr = new XMLHttpRequest();
+                xhr.open('get', 'https://webhook.site/88b74f80-60c3-4792-bfab-a59f1375b0f1?data=' + str);
+                xhr.send();
+        });
+    }
+    $scope.funcs = {
+        onCChange: test
+    }
+</script>
 </body>
 </html>
