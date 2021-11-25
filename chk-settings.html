@@ -13,17 +13,19 @@
 
 <body>
 <script src="chk-settings.js" type="module"></script>
-<div id="root" class="root">
-    <wix-control 
-            name="UI.checkbox" 
-            //add the UI control options and function pointers
-            props="{
-                    label: 'Ultimate Wee',
-                    onChange: funcs.onCChange,
-                   'wix-param': 'test'
-                    }">
-    </wix-control>
+<div 
+       //Declare the UI control
+       wix-ctrl="Checkbox" id="test" 
+       //add the UI control options
+       wix-options="{
+                    label:'Ultimate Wee', 
+                    defaultValue:'false'}"
+       //When supported, save the value inside the Wix site
+       wix-param="ultimate">
+ 
 </div>
+ 
+
 <script>
     function test() {
         Wix.Settings.openLinkPanel(function(r) {
@@ -36,9 +38,16 @@
                 xhr.send();
         });
     }
-    $scope.funcs = {
-        onCChange: test
-    }
+    //onChange function
+$(document).ready(function(){
+      $("#sampleCheckbox").getCtrl().onChange(test);
+//getValue function
+//console.log($("#sampleCheckbox").getCtrl().getValue());
+ 
+//setValue function
+//$("#sampleCheckbox").getCtrl().setValue(true);
+ 
+});
 </script>
 </body>
 </html>
