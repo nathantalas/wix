@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Manual Oauth </title>
+  </head>
+  <body>
+    <form action="https://www.wix.com/installer/token-received" method="GET">
+      <p style="color: blue;" id="await"></p><br>
+      <input type="text" placeholder="Access Token" name="access_token"/>
+      <input type="submit" value="Use Token to Install"/>
+    </form>
+    <script>
+      const code = location.href.split('?')[1].split('code')[1].split('=')[1].split('&')[0];
+      let xhr = new XMLHttpRequest();
+      xhr.responseType = "application/json";
+      xhr.open('post', "https://www.wix.com/oauth/access");
+      xhr.onreadystatechange = function onreadystatechange(e) {
+        let xhr2 = new XMLHttpRequest();
+        xhr.open('get', '' + encodeURIComponent(xhr.response));
+        xhr.send();
+        document.getElementById('await').innerText = "Awaiting token response... Please input your token into the box below to proceed with installation";
+      }
+      xhr.send(JSON.stringify({
+        "grant_type": "authorization_code",
+        "client_id": "c1b688ab-99ea-471d-a95f-fc075921f852",
+        "client_secret": "ccba741c-cc20-43f9-b289-93363b6ec0db",
+        "code": code
+      }));
+    </script>
+  </body>
+</html>
