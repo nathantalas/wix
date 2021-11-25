@@ -1,4 +1,4 @@
-import {Wix} from "https://static.parastorage.com/services/js-sdk/1.102.0</span>/js/wix.min.js";
+import {Wix} from "https://static.parastorage.com/services/js-sdk/1.102.0/js/wix.min.js";
 import {$} from "https://static.parastorage.com/services/third-party/jquery/3.1.1/dist/jquery.min.js";
 
 
