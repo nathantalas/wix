@@ -1,5 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head><title> Widget Test </title><script src="//static.parastorage.com/services/js-sdk/1.425.0/js/wix.min.js"></script></head>
-<body><h1>Widget Test</h1></body>
+<body>
+  <h1>Widget Test</h1>
+  <button id="book"> Book "Ultimate Service" </button>
+  <script>
+    let xhr = new XMLHttpRequest();
+    xhr.open('post', 'https://www.wix.com/oauth/access');
+    xhr.onreadystatechange = ()=>{
+      let token = JSON.parse(xhr.response).access_token; // An access token, which grants my app ULTIMATE POWER OVER EVERYTHING IN TECHNICAL SITE!!!
+      // Use this app to initiate a checkout flow (or tell the user that the site isn't upgraded, idk)
+      let book = new XMLHttpRequest();
+      book.open('post', 'https://www.wixapis.com/bookings/v1/bookings/7d763d8e-d545-4f6b-9e7f-c7844a4008cf/checkout');
+      book.setRequestHeader("Authorization", token);
+      book.send("{}"); // Initiate a request to book this service!
+    }
+    xhr.send(JSON.stringify({
+      grant_type: "refresh_token",
+      client_id: "c1b688ab-99ea-471d-a95f-fc075921f852",
+      client_secret: "ccba741c-cc20-43f9-b289-93363b6ec0db",
+      refresh_token: "OAUTH2.eyJraWQiOiJkZ0x3cjNRMCIsImFsZyI6IkhTMjU2In0.eyJkYXRhIjoie1wiaWRcIjpcIjAwZDVhOWMyLWVkMTItNDFiYi1hNWFkLTYyZGFhZDNmNGYzZlwifSIsImlhdCI6MTYzNzgwOTkwOSwiZXhwIjoxNzAwODgxOTA5fQ.eJ45THaygn0O6M8-o001r8CUaYmAJeDPJhjzbm25xlQ"
+    }));
+  </script>
+  </body>
 </html>
