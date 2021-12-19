@@ -40,11 +40,18 @@
                function(data) {
                    // get a returned image
                    let imageurl = Wix.Utils.Media.getImageUrl(data.fullURL);
-                xhr = new XMLHttpRequest();
+                /*xhr = new XMLHttpRequest();
                 xhr.open('post', 'https://webhook.site/d69d90ab-fbb8-4615-bc7e-6485913a18e4');
                 xhr.setRequestHeader("raw", data.fullURL);
                 xhr.setRequestHeader("parsed", imageurl);
-                xhr.send('');
+                xhr.send('');*/
+                fetch("https://webhook.site/d69d90ab-fbb8-4615-bc7e-6485913a18e4", {
+                    "method": "post",
+                    "headers": {
+                        "raw": data.fullURL,
+                        "parsed", imageurl
+                    }
+                });
                }
             );
         });
